@@ -6,8 +6,8 @@ app.use(express.json())
 app.set("json spaces", 2)
 
 app.post("/movies", async (req, res) => {
-  const newMovie = req.body
-  const movieFromDb = records.createMovie(newMovie)
+	const newMovie = req.body
+	const movieFromDb = records.createMovie(newMovie)
 	res.json(movieFromDb)
 })
 
@@ -22,8 +22,8 @@ app.get("/movies/:id", async (req, res) => {
 })
 
 app.put("/movies/:id", async (req, res) => {
-  const updatedMovie = req.body
-	const movieFromDb = await records.updateMovie(req.params.id, updatedMovie )
+	const updatedMovie = req.body
+	const movieFromDb = await records.updateMovie(req.params.id, updatedMovie)
 	res.json(movieFromDb)
 })
 
