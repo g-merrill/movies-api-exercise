@@ -7,8 +7,8 @@ app.set("json spaces", 2)
 
 app.post("/movies", async (req, res) => {
   const newMovie = req.body
-  const addedMovie = records.createMovie(newMovie)
-	res.json(addedMovie)
+  const movieFromDb = records.createMovie(newMovie)
+	res.json(movieFromDb)
 })
 
 app.get("/movies", async (req, res) => {
@@ -19,6 +19,12 @@ app.get("/movies", async (req, res) => {
 app.get("/movies/:id", async (req, res) => {
 	const movie = await records.getMovieById(req.params.id)
 	res.json(movie)
+})
+
+app.put("/movies/:id", async (req, res) => {
+  const updatedMovie = req.body
+	const movieFromDb = await records.updateMovie(req.params.id, updatedMovie )
+	res.json(movieFromDb)
 })
 
 app.get("/", async (req, res) => {
