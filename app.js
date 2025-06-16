@@ -27,6 +27,11 @@ app.put("/movies/:id", async (req, res) => {
 	res.json(movieFromDb)
 })
 
+app.delete("/movies/:id", async (req, res) => {
+	const deletedMovie = await records.deleteMovie(req.params.id)
+	res.json(deletedMovie)
+})
+
 app.get("/", async (req, res) => {
 	res.send("Welcome to the movies API!")
 })
